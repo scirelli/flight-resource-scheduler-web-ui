@@ -1,24 +1,44 @@
+const webpack = require('webpack'), //to access built-in plugins
+      path = require('path');
+
 module.exports = {
     entry: "./src/scripts/main.js",
     output:{
-        path: __dirname + '/build',
-        publicPath: '/build/',
+        path: path.resolve(__dirname , 'dist'),
+        publicPath: '/dist/',
         filename: 'bundle.js'
     },
 
     module: {
-        loaders:[
+        rules:[
             {
                 test: /\.(svg|jpg|png)$/,
-                loader: 'url'
+                use: 'url-loader'
             },
             {
                 test: /\.css$/,
-                loader: [
-                    'style',
-                    'css'
+                use: [
+                    {loader: 'style-loader'},
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true
+                        }
+                    }
                 ]
             }
         ]
-    }
+    },
+
+    plugins: [
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery',
+            Popper: ['popper.js', 'default'],
+            // In case you imported plugins individually, you must also require them here:
+            Util: "exports-loader?Util!bootstrap/js/dist/util",
+            Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown",
+        })
+    ]
 };
