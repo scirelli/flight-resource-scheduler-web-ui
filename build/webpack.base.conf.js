@@ -1,3 +1,4 @@
+var webpack = require("webpack") //to access built-in plugins
 var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
@@ -71,5 +72,20 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+ 
+  plugins:[
+        new webpack.BannerPlugin({
+            banner: "/* Author: Steve Cirelli */",
+            raw: true,
+            entryOnly: true
+        }),
+
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery",
+            Popper: ["popper.js", "default"]
+        })
+  ]
 }
