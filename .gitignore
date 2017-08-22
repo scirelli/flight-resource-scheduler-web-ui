@@ -17,3 +17,4 @@ keys/
 *.ntvs*
 *.njsproj
 *.sln
+test/unit/.chrome
