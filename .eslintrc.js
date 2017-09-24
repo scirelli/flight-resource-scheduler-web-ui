@@ -16,6 +16,9 @@ module.exports = {
   plugins: [
     'html'
   ],
+  "globals":{
+      "$": true
+  },
   // add your custom rules here
   'rules': {
     // allow paren-less arrow functions
@@ -34,28 +37,13 @@ module.exports = {
         'overrides': {
             'import': {'after': true},
             'as': {'before': true, 'after': true},
-            'from': {'before': true, 'after': true}
-        }
-    }],
-    'key-spacing': ['error', {
-        "multiLine": {
-            "beforeColon": false,
-            "afterColon": true
-        },
-        "align": {
-            "beforeColon": true,
-            "afterColon": true,
-            "on": "colon"
+            'from': {'before': true, 'after': true},
+            'return': {'after': true},
+            'switch': {'after': true}
         }
     }],
     'newline-after-var': ['error', 'always'],
     'one-var': ['error', { 'initialized': 'always', 'uninitialized': 'always' }],
-    'one-var-declaration-per-line': ['error', 'initializations'],
-    'no-multi-spaces': [
-        "error", { exceptions: {
-            "VariableDeclarator": true,
-            "ImportDeclaration": true
-        }},
-    ]
+    'one-var-declaration-per-line': ['error', 'initializations']
   }
 }

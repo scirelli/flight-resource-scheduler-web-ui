@@ -1,0 +1,10 @@
+{
+    "server-env": "dev",
+    "debug": {
+        "debugging": true
+    },
+
+    "app": {
+        "language": "en-US"
+    }
+}
