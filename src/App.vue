@@ -2,7 +2,9 @@
     <div id="app">
         <sc-header></sc-header>
         <div class="content-main">
-            <router-view></router-view>
+            <transition v-bind:name="transitionName">
+                <router-view></router-view>
+            </transition>
         </div>
         <sc-footer></sc-footer>
     </div>
@@ -14,12 +16,25 @@
 
     export default {
         name: 'app',
+
         data: function data() {
-            return {};
+            return {
+                transitionName: 'slide'
+            };
         },
+
         components: {
             scHeader: scHeader,
             scFooter: scFooter
+        },
+
+        beforeRouteUpdate: function beforeRouteUpdate(to, from, next) {
+            const toDepth = to.path.split('/').length,
+                fromDepth = from.path.split('/').length;
+
+            this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left';
+
+            next();
         }
     };
 </script>

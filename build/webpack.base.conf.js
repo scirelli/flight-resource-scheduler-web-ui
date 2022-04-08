@@ -86,9 +86,7 @@ module.exports = {
             $: "jquery",
             jQuery: "jquery",
             "window.jQuery": "jquery",
-            Popper: ["popper.js", "default"],
-            moment: 'moment',
-            fullCalendar: 'fullcalendar'
+            Popper: ["popper.js", "default"]
         })
   ]
 }

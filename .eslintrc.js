@@ -44,6 +44,10 @@ module.exports = {
     }],
     'newline-after-var': ['error', 'always'],
     'one-var': ['error', { 'initialized': 'always', 'uninitialized': 'always' }],
-    'one-var-declaration-per-line': ['error', 'initializations']
+    'one-var-declaration-per-line': ['error', 'initializations'],
+    'max-len': ['error', {
+        'ignoreComments': true ,
+        'code': 300
+    }]
   }
 }
